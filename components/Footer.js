@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer class="text-center text-white bg-slate-300">
-            <div class=" pt-9">
+            <div class="pt-9">
                 <div class="flex justify-center mb-9">
                     <a href="https://www.youtube.com/channel/UCyphrZpMeuA1ATGPzlStsng" class="mr-9 text-gray-800 hover:text-[#ff0000] transition duration-150 ease-out">
                         <svg
