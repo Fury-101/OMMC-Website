@@ -15,6 +15,39 @@ function Test({ qid, isSSR, pdf}) {
         ]
     }
 
+    function submit(ovrride) {
+        if (isSSR) return;
+
+        let unansPopup = document.getElementById("unanswered")
+        let unanswered = false
+        const answers = [...document.querySelectorAll(".inputs")].map(e => {
+            if (e.value === "")
+                unanswered = true
+            return e.value.trim()
+        })
+
+        if (ovrride)
+            unanswered = false
+
+        if (unanswered) {
+            unansPopup.showModal() //make them sad
+            return
+        }
+        
+        fetch(`${process.env.NEXT_PUBLIC_URL}/api/submit`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: qid.id,
+                answers: answers
+            })
+        })
+        
+        location.href = "/success"
+    }
+
     function Attachment(s) {
         if (s.attached?.type === `image`) {
             return <img src={s.attached?.src} className="mx-auto"/> 
