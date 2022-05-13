@@ -43,7 +43,7 @@ export default function Sponsors() {
                     <div className="flex grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
                         {products.map((product) => (
                             <a key={product.id} href={product.href} className="group">
-                                <div className="self-center w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                                <div className="self-center w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                                     <img
                                         src={product.imageSrc}
                                         alt={product.imageAlt}
