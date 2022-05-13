@@ -20,8 +20,14 @@ const products = [
             "https://cdn.discordapp.com/attachments/710679539558121482/973275946721370193/unknown.png",
         imageAlt: "AoPS",
     },
+    {
+        id: 3,
+        href: "https://www.wolfram.com/language/",
+        imageSrc:
+            "https://media.discordapp.net/attachments/760189295067004962/974456593397731348/unknown.png",
+        imageAlt: "Wolfram Language",
+    },
 ];
-
 export default function Sponsors() {
     return (
         <>
