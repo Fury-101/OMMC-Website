@@ -64,7 +64,7 @@ function Test({ qid, isSSR, pdf}) {
         </object>}
         {
             qid.questions.map((s, i) => 
-                <div className='text-center block flex items-center justify-center my-16' key={`container-${i}`}>
+                <div className='text-center flex items-center justify-center my-16' key={`container-${i}`}>
                     <div className='bg-slate-200 border-4 border-solid border-gray-300 rounded-lg w-2/3 py-2 px-4' key={`div-${i}`}>
                         <h2 className='text-3xl font-semibold text-red-700' key={`qnum-${i}`}>Q{i+1}</h2>
                         {!qid.pdf && <p className='text-2xl my-2 text-center w-full mx-auto' id = {`katex-outp-${i}`} key={`q-${i}`}> {s.question} </p>}

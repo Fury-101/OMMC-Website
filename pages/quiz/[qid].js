@@ -9,20 +9,11 @@ import XMLHttpRequest from 'xhr2'
 export default ({ qid, err, pdf }) => {
     const [isSSR, setIsSSR] = useState(true)
     const [showQs, setShowQs] = useState(false)
+    const [test, setTest] = useState({})
 
     useEffect(() => {
 	    setIsSSR(false)
     }, [])
-
-    if (!isSSR)
-        window.WebFontConfig = { // more latex
-            custom: {
-                families: ['KaTeX_AMS', 'KaTeX_Caligraphic:n4,n7', 'KaTeX_Fraktur:n4,n7',
-                    'KaTeX_Main:n4,n7,i4,i7', 'KaTeX_Math:i4,i7', 'KaTeX_Script',
-                    'KaTeX_SansSerif:n4,n7,i4', 'KaTeX_Size1', 'KaTeX_Size2', 'KaTeX_Size3',
-                    'KaTeX_Size4', 'KaTeX_Typewriter'],
-            },
-        }
 
     if (err)
         return <>
@@ -32,6 +23,8 @@ export default ({ qid, err, pdf }) => {
             </div>
         </>
     
+    let info = null;
+
     return <>
         <style global jsx>{`
             html,
@@ -56,8 +49,8 @@ export default ({ qid, err, pdf }) => {
                     <p className="text-center text-2xl">do yo best</p>
                 </>}
             </div>
-            <Registration state={showQs} />
-            <Test qid={qid} isSSR={isSSR} pdf={pdf}/>
+            <Registration state={showQs} setState={setShowQs} />
+            {showQs && <Test qid={qid} isSSR={isSSR} pdf={pdf}/>}
         </div>
 
         <Footer/>
