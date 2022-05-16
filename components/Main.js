@@ -285,8 +285,10 @@ function Main() {
                   Prizes shouldn’t be the main reason someone takes OMMC, but in
                   previous years we have been sponsored by organizations such as
                   AoPS, Maplesoft, and Wolfram Alpha, who have provided hundreds
-                  of dollars to top scoring competitors. We expect this year to
-                  be no different.
+                  of dollars to top scoring competitors. This year, we have a 45 
+                  dollar Desmos Gift Card Code, a 500 dollar Geogebra Webinar, 
+                  100 dollars in AoPS coupons, and 3600 dollars in Wolfram Alpha
+                  Notebook Editions to give out so far. 
                 </p>
               </div>
               <div className="self-center">
