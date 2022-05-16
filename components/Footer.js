@@ -1,8 +1,8 @@
 function Footer() {
     return (
-        <footer className="text-center text-white bg-slate-300">
-            <div className="pt-9">
-                <div className="flex justify-center mb-9">
+        <footer className="text-center text-white bg-slate-200">
+            <div className="pt-11">
+                <div className="flex justify-center mb-5">
                     <a
                         href="https://www.youtube.com/channel/UCyphrZpMeuA1ATGPzlStsng"
                         className="mr-9 text-gray-800 hover:text-[#ff0000] transition duration-150 ease-out"
