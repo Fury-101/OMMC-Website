@@ -183,7 +183,9 @@ function Main() {
               <p className="ml-16 max-w-2xl  text-gray-500">
                 Our competition problems have been selectively written, chosen
                 and reviewed by math students around the world to be original,
-                creative, and inspirational.
+                creative, and inspirational. The test is designed to be accessible
+                to participants of all levels, but later questions will be 
+                challenging to almost every contestant.
               </p>
             </div>
           </div>
