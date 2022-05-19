@@ -287,10 +287,15 @@ function Main() {
                   Prizes shouldn’t be the main reason someone takes OMMC, but in
                   previous years we have been sponsored by organizations such as
                   AoPS, Maplesoft, and Wolfram Alpha, who have provided hundreds
-                  of dollars to top scoring competitors. This year, we have a 45 
-                  dollar Desmos Gift Card Code, a 500 dollar Geogebra Webinar, 
-                  100 dollars in AoPS coupons, and 3600 dollars in Wolfram Alpha
-                  Notebook Editions to give out so far. 
+                  of dollars to top scoring competitors. This year, we have a 45
+                  dollar Desmos Gift Card Code, 300 dollars in gift cards and 
+                  T-shirts from Jane Street, a 500 dollar Geogebra Webinar, 100
+                  dollars in AoPS coupons, and 3600 dollars in Wolfram Alpha 
+                  Notebook Editions to give out so far. We are happy to announce
+                  that Maplesoft will be sponsoring us with $168 value in 4 
+                  Maple Learn Premium accounts, active for 6 months, that will be
+                  given to the winning team. More updates on prizes coming soon.
+
                 </p>
               </div>
               <div className="self-center">
