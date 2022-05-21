@@ -79,6 +79,16 @@ const members = [
     role: "Outreach",
     bio: "Ananya is currently a sophomore at Marine Academy of Science and Technology in Highlands, NJ. She is on OMMC's social media and outreach team, and helps out with making flyers and exploring social media design. She's a math tutor for students in elementary and middle school, and loves working with students to be able to work on their strengths and weaknesses and be part of their learning experience. A few of her hobbies include playing lacrosse, designing content, hiking, exploring finance, and many more. Ananya loves meeting new people and trying new things!"
   }, 
+  {
+    id: 9,
+    name: "Advika Vuppala",
+    href: "#",
+    imageSrc:
+      "https://media.discordapp.net/attachments/751497467329118280/977556703505703012/unknown.png",
+    imageAlt: "Advika Vuppala",
+    role: "Outreach",
+    bio: "Advika Vuppala is a sophomore at High Technology High School in Lincroft, New Jersey. She worked on Marketing and Social Media for OMMC last year, and also helped with content creation for the website. This year, she helped with Outreach and Social Media. Advika served as Marketing and Outreach director for cypHER, and has a lot of experience with managing professional social media accounts. In her free time, she loves playing lacrosse, baking, hiking, and biking."
+  }, 
 ];
 
 export default function Example() {
