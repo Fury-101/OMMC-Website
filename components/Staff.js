@@ -69,6 +69,16 @@ const members = [
     role: "Content Creator",
     bio: "Vikram Sarkar is a test solver for the OMMC team and is currently an 8th grade. His achievements include 2 times Mathcounts Nationals Qualifier (top 56 / top 25% this year), and USAJMO Winner. He likes listening to EDM and various artists, and also likes video games."
   }, 
+  {
+    id: 7,
+    name: "Ananya Vuppala",
+    href: "#",
+    imageSrc:
+      "https://media.discordapp.net/attachments/751497467329118280/977556703505703012/unknown.png",
+    imageAlt: "Ananya Vuppala",
+    role: "Outreach",
+    bio: "Ananya is currently a sophomore at Marine Academy of Science and Technology in Highlands, NJ. She is on OMMC's social media and outreach team, and helps out with making flyers and exploring social media design. She's a math tutor for students in elementary and middle school, and loves working with students to be able to work on their strengths and weaknesses and be part of their learning experience. A few of her hobbies include playing lacrosse, designing content, hiking, exploring finance, and many more. Ananya loves meeting new people and trying new things!"
+  }, 
 ];
 
 export default function Example() {
