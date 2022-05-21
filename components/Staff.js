@@ -70,7 +70,7 @@ const members = [
     bio: "Vikram Sarkar is a test solver for the OMMC team and is currently an 8th grade. His achievements include 2 times Mathcounts Nationals Qualifier (top 56 / top 25% this year), and USAJMO Winner. He likes listening to EDM and various artists, and also likes video games."
   }, 
   {
-    id: 7,
+    id: 8,
     name: "Ananya Vuppala",
     href: "#",
     imageSrc:
