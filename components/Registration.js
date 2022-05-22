@@ -81,7 +81,6 @@ export default function Registration() {
                                 <input
                                     name="email"
                                     type="text"
-                                    placeholder="John Doe"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                     required
                                 />
@@ -95,7 +94,6 @@ export default function Registration() {
                                 <input
                                     name="email"
                                     type="text"
-                                    placeholder="johndoe@gmail.com"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                     required
                                 />
@@ -109,7 +107,6 @@ export default function Registration() {
                                 <input
                                     name="grade"
                                     type="text"
-                                    placeholder="9"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                     required
                                 />
@@ -147,7 +144,6 @@ export default function Registration() {
                                 <input
                                     name="contact"
                                     type="text"
-                                    placeholder="(555)-555-5555"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                 />
                             </div>
@@ -160,7 +156,6 @@ export default function Registration() {
                                 <input
                                     name="discord"
                                     type="text"
-                                    placeholder="ModularBread#7790"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                 />
                             </div>
