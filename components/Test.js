@@ -15,39 +15,6 @@ function Test({ qid, isSSR, pdf}) {
         ]
     }
 
-    function submit(ovrride) {
-        if (isSSR) return;
-
-        let unansPopup = document.getElementById("unanswered")
-        let unanswered = false
-        const answers = [...document.querySelectorAll(".inputs")].map(e => {
-            if (e.value === "")
-                unanswered = true
-            return e.value.trim()
-        })
-
-        if (ovrride)
-            unanswered = false
-
-        if (unanswered) {
-            unansPopup.showModal() //make them sad
-            return
-        }
-        
-        fetch(`${process.env.NEXT_PUBLIC_URL}/api/submit`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: qid.id,
-                answers: answers
-            })
-        })
-        
-        location.href = "/success"
-    }
-
     function Attachment(s) {
         if (s.attached?.type === `image`) {
             return <img src={s.attached?.src} className="mx-auto"/> 
@@ -86,14 +53,6 @@ function Test({ qid, isSSR, pdf}) {
                 </div>
             )
         }
-        <dialog className="border-4 border-solid border-gray-300 bg-white rounded-lg" id="unanswered">
-            <p className="text-xl font-semibold">Some questions have not been answered.</p>
-            <form method="dialog">
-                <button className='ml-auto drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative rounded-full py-3 px-4 font-semibold text-white bg-sky-500 hover:bg-sky-600 my-4 text-2xl transition duration-150' value="cancel">Close</button>
-                <button onClick={() => submit(true)} className='ml-4 mr-auto drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative rounded-full py-3 px-4 font-semibold text-white bg-red-500 hover:bg-red-600 my-4 text-2xl transition duration-150'>Submit Anyways</button>
-            </form>
-        </dialog>
-        <button onClick={() => submit(false)} className='drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative rounded-full py-3 px-4 font-semibold text-white bg-red-500 hover:bg-red-600 my-4 text-2xl transition duration-150'>Submit</button>
     </>
 }
 

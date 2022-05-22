@@ -1,24 +1,5 @@
-export default function Registration({ state }) {
+export default function Registration() {
     const req = <span className="text-2xl text-red-600">*</span>;
-
-    const idToObj = id => Object.fromEntries(new FormData(document.getElementById(id)));
-
-    function next() {
-        const generalinfo = idToObj("general");
-
-        const c1 = idToObj("c1-questions");
-        const c2 = idToObj("c2-questions");
-        const c3 = idToObj("c3-questions");
-        const c4 = idToObj("c4-questions");
-
-        const teamInfo = {
-            ...generalinfo,
-            c1,
-            c2,
-            c3,
-            c4,
-        };
-    }
 
     return (
         <>
@@ -33,6 +14,7 @@ export default function Registration({ state }) {
                             type="text"
                             placeholder="Team Raccoons"
                             className="general bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
+                            required
                         />
                     </div>
                 </div>
@@ -71,7 +53,7 @@ export default function Registration({ state }) {
                             </p>
                             <svg
                                 id={`c${i}-btn`}
-                                className="-rotate-90 w-9 h-9 mt-1 inline-block"
+                                className="-rotate-90 transition ease-in-out w-9 h-9 mt-1 inline-block"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -94,6 +76,20 @@ export default function Registration({ state }) {
                         <div className="text-center flex items-center justify-center my-16">
                             <div className="bg-slate-200 border-4 border-solid border-gray-300 rounded-lg w-2/3 py-2 px-4">
                                 <p className="text-2xl my-2 text-center w-full mx-auto">
+                                    Name{req}
+                                </p>
+                                <input
+                                    name="email"
+                                    type="text"
+                                    placeholder="John Doe"
+                                    className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div className="text-center flex items-center justify-center my-16">
+                            <div className="bg-slate-200 border-4 border-solid border-gray-300 rounded-lg w-2/3 py-2 px-4">
+                                <p className="text-2xl my-2 text-center w-full mx-auto">
                                     Email{req}
                                 </p>
                                 <input
@@ -101,6 +97,7 @@ export default function Registration({ state }) {
                                     type="text"
                                     placeholder="johndoe@gmail.com"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
+                                    required
                                 />
                             </div>
                         </div>
@@ -114,6 +111,7 @@ export default function Registration({ state }) {
                                     type="text"
                                     placeholder="9"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
+                                    required
                                 />
                             </div>
                         </div>
@@ -125,7 +123,6 @@ export default function Registration({ state }) {
                                 <input
                                     name="gender"
                                     type="text"
-                                    placeholder="Male"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                 />
                             </div>
@@ -138,7 +135,6 @@ export default function Registration({ state }) {
                                 <input
                                     name="school"
                                     type="text"
-                                    placeholder="Monmouth High School"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                 />
                             </div>
@@ -172,29 +168,6 @@ export default function Registration({ state }) {
                     </form>
                 </div>
             ))}
-            <dialog
-                className="border-4 border-solid border-gray-300 bg-white rounded-lg"
-                id="unanswered"
-            >
-                <p className="text-xl font-semibold">
-                    All questions marked with a {req} must be answered.
-                </p>
-                <form method="dialog">
-                    <button
-                        className="ml-auto drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative rounded-full py-3 px-4 font-semibold text-white bg-sky-500 hover:bg-sky-600 my-4 text-2xl transition duration-150"
-                        value="cancel"
-                    >
-                        Close
-                    </button>
-                </form>
-            </dialog>
-            <button
-                type="button"
-                onClick={() => next()}
-                className="drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative rounded-full py-3 px-4 font-semibold text-white bg-red-500 hover:bg-red-600 my-4 text-2xl transition duration-150"
-            >
-                Continue
-            </button>
         </>
     );
 }
