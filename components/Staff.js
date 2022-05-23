@@ -117,7 +117,7 @@ const members = [
       "https://media.discordapp.net/attachments/751497467329118280/977556703505703012/unknown.png",
     imageAlt: "Mahith Gottipati",
     role: "Problem Committee",
-    bio: "Mahith Gottipati is an 8th grader at Quail Valley Middle School. He is a member of the Problem Committee for OMMC. Some of his achievements are qualifying for the AIME and getting multiple first places in MathLeague's. You’ll find him on AoPS with the username rocketsri, where he, along with Justin Lee and Evan Chang run Holiday Problems. Outside of mathematics, he enjoys doing science bowl (and is a team captain for his school) and playing chess under the handle "mathimathz" on lichess."
+    bio: "Mahith Gottipati is an 8th grader at Quail Valley Middle School. He is a member of the Problem Committee for OMMC. Some of his achievements are qualifying for the AIME and getting multiple first places in MathLeague's. You’ll find him on AoPS with the username rocketsri, where he, along with Justin Lee and Evan Chang run Holiday Problems. Outside of mathematics, he enjoys doing science bowl (and is a team captain for his school) and playing chess under the handle mathimathz on lichess."
   }, 
   {
     id: 13,
