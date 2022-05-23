@@ -87,7 +87,7 @@ const members = [
       "https://media.discordapp.net/attachments/751497467329118280/977556703505703012/unknown.png",
     imageAlt: "Alexander Wang",
     role: "Content Creator",
-    bio: "Alexander Wang is a 8th grader who works as a content creator for OMMC, and has contributed problems to the competition. He has achieved Distinguished Honor Roll on the AMC 10/12 multiple times. He has qualified for USAJMO 3 times, and placed overall rank 1 in USAJMO out of all contestants in 2022. He has also qualified for MATHCOUNTS Nationals two times. He is also a member of the selective Lehigh ARML Fire Team. He will be attending the prestigious MOP program this summer. You can find him on AoPS with the nickname "DottedCaculator"."
+    bio: "Alexander Wang is a 8th grader who works as a content creator for OMMC, and has contributed problems to the competition. He has achieved Distinguished Honor Roll on the AMC 10/12 multiple times. He has qualified for USAJMO 3 times, and placed overall rank 1 in USAJMO out of all contestants in 2022. He has also qualified for MATHCOUNTS Nationals two times. He is also a member of the selective Lehigh ARML Fire Team. He will be attending the prestigious MOP program this summer. You can find him on AoPS with the nickname DottedCaculator."
   },
   {
     id: 10,
