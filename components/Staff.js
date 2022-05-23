@@ -131,6 +131,16 @@ const members = [
   }, 
   {
     id: 14,
+    name: "Ritwin Narra",
+    href: "#",
+    imageSrc:
+      "https://media.discordapp.net/attachments/751497467329118280/977556703505703012/unknown.png",
+    imageAlt: "Ritwin Narra",
+    role: "Content Creation",
+    bio: "Ritwin is currently a freshman in California. He is a Test Solver for OMMC. He has qualified for the AIME since 7th grade, and his math accomplishments include a 72 on USAMTS and a 24 on BAMO (one point under Honorable Mention). In school, he teaches both programming and math. Apart from math, he loves coding: he's a USACO Platinum participant and reached Codeforces Master. Also, he likes cubing, especially the Square-1, and aims for a sub-20 3x3 average."
+  }, 
+  {
+    id: 15,
     name: "Ananya Vuppala",
     href: "#",
     imageSrc:
@@ -140,7 +150,7 @@ const members = [
     bio: "Ananya is currently a sophomore at Marine Academy of Science and Technology in Highlands, NJ. She is on OMMC's social media and outreach team, and helps out with making flyers and exploring social media design. She's a math tutor for students in elementary and middle school, and loves working with students to be able to work on their strengths and weaknesses and be part of their learning experience. A few of her hobbies include playing lacrosse, designing content, hiking, exploring finance, and many more. Ananya loves meeting new people and trying new things!"
   }, 
   {
-    id: 15,
+    id: 16,
     name: "Advika Vuppala",
     href: "#",
     imageSrc:
