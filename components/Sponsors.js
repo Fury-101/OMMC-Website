@@ -49,6 +49,13 @@ const sponsors = [
     imageAlt: "3blue1brown",
   },
   
+  {
+    id: 8,
+    href: "https://thebeautyofmath.net/",
+    imageSrc:
+      "https://cdn.shopify.com/s/files/1/0536/6651/3088/files/unnamed_180x.jpg?v=1612934980",
+    imageAlt: "TBOM",
+  },
 ];
 
 export default function Sponsors() {
