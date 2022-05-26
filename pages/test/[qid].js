@@ -6,7 +6,7 @@ const fs = require("fs");
 import { useState, useEffect } from "react";
 import XMLHttpRequest from "xhr2";
 
-export default ({ qid, err, pdf }) => {
+export default ({ test, err, pdf }) => {
     const [isSSR, setIsSSR] = useState(true);
     const [showQs, setShowQs] = useState(false);
     const [teamInfo, setTeamInfo] = useState({});
@@ -35,33 +35,28 @@ export default ({ qid, err, pdf }) => {
 
     function next() {
         const generalinfo = idToObj("general");
-        if (!$("general").reportValidity())
-            return
+        if (!$("general").reportValidity()) return;
 
         const c1 = idToObj("c1-questions");
-        if (!$("c1-questions").reportValidity())
-            return
+        if (!$("c1-questions").reportValidity()) return;
 
         const c2 = idToObj("c2-questions");
         let anyans = false;
         for (const data in c2) if (c2[data] !== "") anyans = true;
 
-        if (anyans && !$("c2-questions").reportValidity())
-            return
+        if (anyans && !$("c2-questions").reportValidity()) return;
 
         const c3 = idToObj("c3-questions");
         anyans = false;
         for (const data in c3) if (c3[data] !== "") anyans = true;
 
-        if (anyans && !$("c3-questions").reportValidity())
-            return
+        if (anyans && !$("c3-questions").reportValidity()) return;
 
         const c4 = idToObj("c4-questions");
         anyans = false;
         for (const data in c4) if (c4[data] !== "") anyans = true;
 
-        if (anyans && !$("c4-questions").reportValidity())
-            return
+        if (anyans && !$("c4-questions").reportValidity()) return;
 
         setTeamInfo({
             ...generalinfo,
@@ -91,14 +86,20 @@ export default ({ qid, err, pdf }) => {
             return;
         }
 
-        fetch(`${process.env.NEXT_PUBLIC_URL}/api/submit`, {
+        console.log({
+            teamInfo,
+            id: test.id,
+            answers,
+        });
+
+        fetch(`/api/submit`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 teamInfo,
-                id: qid.id,
+                id: test.id,
                 answers,
             }),
         });
@@ -126,7 +127,7 @@ export default ({ qid, err, pdf }) => {
                     <h1 className="text-center font-semibold text-4xl mb-2 text-red-700">
                         Instructions:
                     </h1>
-                    {qid.instructions?.map(i => (
+                    {test.instructions?.map(i => (
                         <p className="text-center text-2xl">{i}</p>
                     )) ?? (
                         <>
@@ -141,7 +142,7 @@ export default ({ qid, err, pdf }) => {
                 {!showQs && (
                     <>
                         <Registration state={showQs} setState={setShowQs} />
-                             
+
                         <button
                             type="button"
                             onClick={() => next()}
@@ -154,7 +155,7 @@ export default ({ qid, err, pdf }) => {
 
                 {showQs && (
                     <>
-                        <Test qid={qid} isSSR={isSSR} pdf={pdf} />
+                        <Test test={test} isSSR={isSSR} pdf={pdf} />
 
                         <dialog
                             className="border-4 border-solid border-gray-300 bg-white rounded-lg"
@@ -254,7 +255,7 @@ export async function getServerSideProps({ params }) {
 
         return {
             props: {
-                qid: test,
+                test: test,
                 pdf: b64pdf,
             },
         };

@@ -1,6 +1,6 @@
 import renderMathInElement from "katex/dist/contrib/auto-render.js"
 
-function Test({ qid, isSSR, pdf}) {
+function Test({ test, isSSR, pdf}) {
     const options = { //latex
         delimiters: [
             {left: "$$", right: "$$", display: true},
@@ -22,20 +22,20 @@ function Test({ qid, isSSR, pdf}) {
     }
 
     return <>
-        {qid.pdf && <object
+        {test.pdf && <object
             data={`data:application/pdf;base64,${pdf}#toolbar=0&navpanes=0`}
             type="application/pdf"
             className="pdf w-3/5 mx-auto"
         >
-            <a className="block border-4 border-solid border-gray-300 bg-white rounded-lg w-2/3 mx-auto text-center my-16 font-semibold py-1 px-1 text-3xl" href={qid.pdf}>Click here to download the PDF file with questions.</a>
+            <a className="block border-4 border-solid border-gray-300 bg-white rounded-lg w-2/3 mx-auto text-center my-16 font-semibold py-1 px-1 text-3xl" href={test.pdf}>Click here to download the PDF file with questions.</a>
         </object>}
         {
-            qid.questions.map((s, i) => 
+            test.questions.map((s, i) => 
                 <div className='text-center flex items-center justify-center my-16' key={`container-${i}`}>
                     <div className='bg-slate-200 border-4 border-solid border-gray-300 rounded-lg w-2/3 py-2 px-4' key={`div-${i}`}>
                         <h2 className='text-3xl font-semibold text-red-700' key={`qnum-${i}`}>Q{i+1}</h2>
-                        {!qid.pdf && <p className='text-2xl my-2 text-center w-full mx-auto' id = {`katex-outp-${i}`} key={`q-${i}`}> {s.question} </p>}
-                        {!isSSR && !qid.pdf && renderMathInElement(document.getElementById(`katex-outp-${i}`), options)}
+                        {!test.pdf && <p className='text-2xl my-2 text-center w-full mx-auto' id = {`katex-outp-${i}`} key={`q-${i}`}> {s.question} </p>}
+                        {!isSSR && !test.pdf && renderMathInElement(document.getElementById(`katex-outp-${i}`), options)}
 
                         {Attachment(s)}
 

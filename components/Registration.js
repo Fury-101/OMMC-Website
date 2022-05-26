@@ -79,7 +79,7 @@ export default function Registration() {
                                     Name{req}
                                 </p>
                                 <input
-                                    name="email"
+                                    name="name"
                                     type="text"
                                     className="bg-slate-100 outline-none w-full text-4xl p-3 border-4 my-4 border-gray-300 border-solid"
                                     required

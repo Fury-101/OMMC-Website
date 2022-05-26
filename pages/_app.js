@@ -1,12 +1,16 @@
-import Head from 'next/head'
-import '../styles/App.css';
-import '../styles/globals.css'
+import Head from "next/head";
+import "../styles/App.css";
+import "../styles/globals.css";
+import { SessionProvider } from "next-auth/react";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     return (
-        <>
+        <SessionProvider session={session}>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
                 <title>OMMC Test Portal</title>
             </Head>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -22,8 +26,8 @@ function MyApp({ Component, pageProps }) {
                 To create a production bundle, use `npm run build` or `yarn build`.
             */}
             <Component {...pageProps} />
-        </>
-    )
+        </SessionProvider>
+    );
 }
 
-export default MyApp
+export default MyApp;
