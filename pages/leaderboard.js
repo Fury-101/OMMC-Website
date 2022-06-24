@@ -1,5 +1,16 @@
+import Head from 'next/head'
+import Navbar from '../components/Navbar.js'
+import Footer from '../components/Footer.js'
+import Banner from '../components/Banner.js'
+
 function Leaderboard() {
-    return (
+    return <>
+        <Head>
+            <title>OMMC</title>
+        </Head>
+
+        <Navbar></Navbar>
+        <Banner></Banner>
         <div className="bg-slate-200 min-h-screen">
             <header className="bg-white shadow-lg bg-slate-100">
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -97,7 +108,7 @@ function Leaderboard() {
                                     className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
                                 >
                                     <div className="font-bold ml-2 inline-block">7. </div>{" "}
-                                    <div className="inline-block">l'Internationale</div>
+                                    <div className="inline-block">l&apos;Internationale</div>
                                 </th>
                                 <td className="px-6 py-4">
                                     Neal Yan, Emily Yu, Pranav Choudhary, Lincoln Liu
@@ -154,7 +165,8 @@ function Leaderboard() {
                 </div>
             </main>
         </div>
-    );
+        <Footer></Footer>
+    </>;
 }
 
 export default Leaderboard;

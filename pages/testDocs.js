@@ -1,6 +1,17 @@
+import Head from 'next/head'
+import Navbar from '../components/Navbar.js'
+import Footer from '../components/Footer.js'
+import Banner from '../components/Banner.js'
+
 function Sample() {
 
-    return (
+    return <>
+        <Head>
+            <title>OMMC</title>
+        </Head>
+
+        <Navbar></Navbar>
+        <Banner></Banner>
         <div className="bg-slate-200 min-h-screen">
             <header className="bg-white shadow-lg bg-slate-100">
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
@@ -13,7 +24,7 @@ function Sample() {
                         <div className="border-4 border-dashed border-gray-400 rounded-lg h-96 shadow-lg ">
                             <iframe
                                 src="https://drive.google.com/file/d/1eE5VRCuH5qBoGlfqo1zarOPA0kiFSbsx/preview"
-                                class="w-full h-full"
+                                className="w-full h-full"
                                 allow="autoplay"
                             ></iframe>{" "}
 
@@ -33,7 +44,7 @@ function Sample() {
                         <div className="border-4 border-dashed border-gray-400 rounded-lg h-96 shadow-lg ">
                             <iframe
                                 src="https://drive.google.com/file/d/18gzfx_VjCUSvsEFsA8GsHUSwj2e4Gk1q/preview"
-                                class="w-full h-full"
+                                className="w-full h-full"
                                 allow="autoplay"
                             ></iframe>{" "}
 
@@ -43,7 +54,7 @@ function Sample() {
 
             </main>
         </div>
-    );
+    </>;
 }
 
 export default Sample;
