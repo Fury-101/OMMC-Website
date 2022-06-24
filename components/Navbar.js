@@ -5,6 +5,8 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 const navigation = [
     { name: "Home", href: "/", current: true },
     { name: "Staff", href: "/staff", current: true },
+    { name: "Leaderboard", href: "/leaderboard", current: true },
+    { name: "Test Docs", href: "/testDocs", current: true },
     { name: "Sample Problems", href: "/sample", current: true },
     { name: "Sponsors", href: "/sponsors", current: true },
 ];

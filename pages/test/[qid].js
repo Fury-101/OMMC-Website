@@ -5,17 +5,38 @@ import Footer from "../../components/Footer.js";
 const fs = require("fs");
 import { useState, useEffect } from "react";
 import XMLHttpRequest from "xhr2";
+import renderMathInElement from "katex/dist/contrib/auto-render.js";
 
-export default ({ test, err, pdf }) => {
+export default function TestPage({ test, err, pdf }) {
     const [isSSR, setIsSSR] = useState(true);
-    const [showQs, setShowQs] = useState(false);
+    const [showQs, setShowQs] = useState(true);
     const [teamInfo, setTeamInfo] = useState({});
+    const options = {
+        //latex
+        delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false },
+            {
+                left: "\\begin{equation}",
+                right: "\\end{equation}",
+                display: true,
+            },
+            { left: "\\begin{align}", right: "\\end{align}", display: true },
+            {
+                left: "\\begin{alignat}",
+                right: "\\end{alignat}",
+                display: true,
+            },
+            { left: "\\begin{gather}", right: "\\end{gather}", display: true },
+            { left: "\\begin{CD}", right: "\\end{CD}", display: true },
+            { left: "\\[", right: "\\]", display: true },
+        ],
+    };
 
     useEffect(() => {
         setIsSSR(false);
     }, []);
-
-    const req = <span className="text-2xl text-red-600">*</span>;
 
     if (err)
         return (
@@ -67,12 +88,13 @@ export default ({ test, err, pdf }) => {
         });
 
         setShowQs(true);
+        !isSSR && window.scrollTo(0,0);
     }
 
     function submit(ovrride) {
         if (isSSR) return;
 
-        let unansPopup = document.getElementById("unanswered");
+        let unansPopup = $("unanswered");
         let unanswered = false;
         const answers = [...document.querySelectorAll(".inputs")].map(e => {
             if (e.value === "") unanswered = true;
@@ -82,7 +104,11 @@ export default ({ test, err, pdf }) => {
         if (ovrride) unanswered = false;
 
         if (unanswered) {
-            unansPopup.showModal(); //make them sad
+            if (typeof unansPopup.showModal !== "function") {
+                unansPopup.hidden = true;
+                return;
+            }
+            unansPopup.showModal();
             return;
         }
 
@@ -102,9 +128,14 @@ export default ({ test, err, pdf }) => {
                 id: test.id,
                 answers,
             }),
-        });
+            mode: "cors",
+        }).then(response => {
+            if (response.status === 200)
+                location.href = "/success";
+            else
+                alert("Error code " + response.status + ": " + response.statusText + "\n" + "Please write down your answers.")
+        })
 
-        location.href = "/success";
     }
 
     return (
@@ -118,20 +149,43 @@ export default ({ test, err, pdf }) => {
                 .pdf {
                     height: 66.666667vh;
                 }
+                .katex { 
+                    font-size: 1.1em;
+                }
+                .mx-1\/4 {
+                    margin-left: 12.5vw;
+                    margin-right: 12.5vw;
+                }
+                .mx-1\/6 {
+                    margin-left: 16.666667vw;
+                    margin-right: 16.666667vw;
+                }
+                .min-w-3\/4 {
+                    min-width: 75vw;
+                }
             `}</style>
 
             <Navbar />
 
-            <div id="screen" className="w-full text-center bg-white">
-                <div className="border-4 border-solid border-gray-300 bg-slate-200 rounded-lg w-2/3 mx-auto my-8 py-1 px-2">
+            <div id="screen" className="w-full bg-white text-center">
+                <div className="border-4 border-solid border-gray-300 bg-slate-200 rounded-lg mx-1/4 my-8 py-1 px-2">
                     <h1 className="text-center font-semibold text-4xl mb-2 text-red-700">
                         Instructions:
                     </h1>
-                    {test.instructions?.map(i => (
-                        <p className="text-center text-2xl">{i}</p>
+                    {test.instructions?.map((e,i) => (
+                        <p
+                            className="text-2xl my-4"
+                            id={`instructions-${e}`}
+                            key={i}
+                            ref={node => {
+                                node && renderMathInElement(node, options);
+                            }}
+                        >
+                            {e}
+                        </p>
                     )) ?? (
                         <>
-                            <p className="text-center text-2xl">
+                            <p className="text-center text-2xl" key={i}>
                                 Answer the questions to the best of your
                                 ability.
                             </p>
@@ -139,19 +193,19 @@ export default ({ test, err, pdf }) => {
                     )}
                 </div>
 
-                {!showQs && (
+                {/* (
                     <>
                         <Registration state={showQs} setState={setShowQs} />
 
                         <button
                             type="button"
                             onClick={() => next()}
-                            className="drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative rounded-full py-3 px-4 font-semibold text-white bg-red-500 hover:bg-red-600 my-4 text-2xl transition duration-150"
+                            className="drop-shadow-lg active:drop-shadow-none active:bottom-0 bottom-0.5 relative text-center rounded-full py-3 px-4 font-semibold text-white bg-red-500 hover:bg-red-600 my-4 text-2xl transition duration-150"
                         >
                             Continue
                         </button>
                     </>
-                )}
+                */}
 
                 {showQs && (
                     <>
@@ -160,6 +214,10 @@ export default ({ test, err, pdf }) => {
                         <dialog
                             className="border-4 border-solid border-gray-300 bg-white rounded-lg"
                             id="unanswered"
+                            ref={node => {
+                                if (typeof node.showModal !== "function")
+                                    node.hidden = true;
+                            }}
                         >
                             <p className="text-xl font-semibold">
                                 Some questions have not been answered.
@@ -192,7 +250,7 @@ export default ({ test, err, pdf }) => {
             <Footer />
         </>
     );
-};
+}
 
 function base64Encode(str) {
     const CHARS =

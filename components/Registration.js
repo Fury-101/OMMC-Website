@@ -33,7 +33,7 @@ export default function Registration() {
                 </div>
             </form>
             {[1, 2, 3, 4].map(i => (
-                <div id={`c${i}`} className="my-16">
+                <div id={`c${i}`} className="my-16" key={i.toString()}>
                     <div className="text-center flex items-center justify-center mx-auto">
                         <button
                             type="button"

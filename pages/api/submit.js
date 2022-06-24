@@ -9,7 +9,8 @@ export default function handler(req, res) {
             flag: 'r'
         }))
 
-        fs.writeFileSync(`../tests/${data.id}_ans.json`, JSON.stringify([...curans, {teamInfo: data.teamInfo, answers: data.answers}]))
+            
+        fs.writeFileSync(`../tests/${data.id}_ans.json`, JSON.stringify([...curans, {teamInfo: data.teamInfo, answers: data.answers, ...(data.time ? {time: data.time} : {})}]))
         res.status(200).send({ answers: data.answers })
     } else {
         res.status(405).send({ message: 'Please use a POST request.' });

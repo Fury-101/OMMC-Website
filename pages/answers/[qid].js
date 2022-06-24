@@ -11,10 +11,10 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const authUsers = [
     "709824734665375928", //evan
-    "308343641598984203" //fury
-]
+    "308343641598984203", //fury
+];
 
-export default ({ data, test, err, pdf }) => {
+export default function Answers({ data, test, err, pdf }) {
     const [isSSR, setIsSSR] = useState(true);
     const [mode, setMode] = useState("table");
     const [open, setOpen] = useState(false);
@@ -27,6 +27,20 @@ export default ({ data, test, err, pdf }) => {
 
     function $(inp) {
         if (!isSSR) return document.querySelector(inp);
+    }
+
+    function formatMS(ms) {
+        const date = new Date(ms);
+        
+        return `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}:${date.getSeconds().toString().padStart(2, "0")}`
+    }
+
+    function formatDiff(ms) {
+        const hours = Math.floor(ms / (1000 * 60 * 60));
+        const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+
+        return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
     }
 
     const ans = data.map(e => e.answers);
@@ -138,14 +152,11 @@ export default ({ data, test, err, pdf }) => {
                 <button onClick={() => signIn()}>Sign in</button>
             </>
         );
-    else if (
-        !authUsers.includes(session?.id) &&
-        session?.id !== test.creator
-    )
+    else if (!authUsers.includes(session?.id) && session?.id !== test.creator)
         return (
             <>
                 <span>
-                    Hey, you didn't create this test.
+                    Hey, you didn&apos;t create this test.
                     <br />
                 </span>
                 <button onClick={() => signOut()}>Sign out</button>
@@ -165,8 +176,7 @@ export default ({ data, test, err, pdf }) => {
 
                 <div id="screen" className="w-screen h-screen text-center">
                     <h1 className="text-center text-red-500 font-bold text-8xl">
-                        {" "}
-                        An error has occurred.{" "}
+                        An error has occurred.
                     </h1>
                     <p className="text-4xl">{err}</p>
                 </div>
@@ -190,7 +200,7 @@ export default ({ data, test, err, pdf }) => {
                 #screen {
                     display: grid;
                     grid-template-columns: repeat(
-                        ${test.questions.length + 1},
+                        ${test.questions.length + 2},
                         1fr
                     );
                     gap: 1rem;
@@ -198,8 +208,9 @@ export default ({ data, test, err, pdf }) => {
                     border: 4px solid #6b7280;
                     border-radius: 12px;
                     background: white;
-                    padding: 0.5rem;
+                    padding: 0.75rem;
                     margin: 2rem;
+                    width: fit-content;
                     align-items: center;
                 }
 
@@ -300,10 +311,14 @@ export default ({ data, test, err, pdf }) => {
                     transform: rotate(90deg);
                 }
             `}</style>
-            
+
             <div className="text-center">
-                <h1 className="text-2xl text-center">Signed in as {session?.user?.name}</h1>
-                <button className="mx-auto text-2xl" onClick={() => signOut()}>Sign out</button>
+                <h1 className="text-2xl text-center">
+                    Signed in as {session?.user?.name}
+                </h1>
+                <button className="mx-auto text-2xl" onClick={() => signOut()}>
+                    Sign out
+                </button>
             </div>
 
             <div>
@@ -314,8 +329,7 @@ export default ({ data, test, err, pdf }) => {
                             mode === "table" ? "font-bold" : ""
                         }`}
                     >
-                        {" "}
-                        Table{" "}
+                        Table
                     </button>
                     <button
                         onClick={() => setMode("pie")}
@@ -323,8 +337,7 @@ export default ({ data, test, err, pdf }) => {
                             mode === "pie" ? "font-bold" : ""
                         }`}
                     >
-                        {" "}
-                        Pie{" "}
+                        Pie
                     </button>
                     <button
                         onClick={() => setMode("raw")}
@@ -332,8 +345,7 @@ export default ({ data, test, err, pdf }) => {
                             mode === "raw" ? "font-bold" : ""
                         }`}
                     >
-                        {" "}
-                        Raw{" "}
+                        Raw
                     </button>
                 </div>
             </div>
@@ -361,9 +373,9 @@ export default ({ data, test, err, pdf }) => {
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M6 18L18 6M6 6l12 12"
                     ></path>
                 </svg>
@@ -372,70 +384,64 @@ export default ({ data, test, err, pdf }) => {
             {mode === "table" && (
                 <div id="screen">
                     <h3 className="name header"> Team Name </h3>
+                    <h3 className="name header"> Time </h3>
                     {test.questions.map((e, i) => (
-                        <p className="header">Q{i + 1}</p>
+                        <p className="header" key={i}>
+                            Q{i + 1}
+                        </p>
                     ))}
-                    {data.map(team => (
+                    {data.map((team, i) => (
                         <>
                             <div className="relative">
                                 <h3 className="name peer hover:bg-gray-300">
-                                    {" "}
-                                    {team.teamInfo["team-name"]}{" "}
+                                    {team.teamInfo["team-name"]}
                                 </h3>
                                 <div className="absolute rounded-md bg-black px-1.5 py-1 left-1/2 opacity-0 peer-hover:opacity-70 -translate-x-1/2 z-10">
                                     {team.teamInfo["c1"].name && (
                                         <span className="text-white">
-                                            {" "}
-                                            {gender(
-                                                team.teamInfo["c1"].gender
-                                            )}{" "}
-                                            {team.teamInfo["c1"].name} <br></br>{" "}
+                                            {gender(team.teamInfo["c1"].gender)}
+                                            {team.teamInfo["c1"].name} <br></br>
                                         </span>
                                     )}
                                     {team.teamInfo["c2"].name && (
                                         <span className="text-white">
-                                            {" "}
-                                            {gender(
-                                                team.teamInfo["c2"].gender
-                                            )}{" "}
-                                            {team.teamInfo["c2"].name} <br></br>{" "}
+                                            {gender(team.teamInfo["c2"].gender)}
+                                            {team.teamInfo["c2"].name} <br></br>
                                         </span>
                                     )}
                                     {team.teamInfo["c3"].name && (
                                         <span className="text-white">
-                                            {" "}
-                                            {gender(
-                                                team.teamInfo["c3"].gender
-                                            )}{" "}
-                                            {team.teamInfo["c3"].name} <br></br>{" "}
+                                            {gender(team.teamInfo["c3"].gender)}
+                                            {team.teamInfo["c3"].name} <br></br>
                                         </span>
                                     )}
                                     {team.teamInfo["c4"].name && (
                                         <span className="text-white">
-                                            {" "}
-                                            {gender(
-                                                team.teamInfo["c4"].gender
-                                            )}{" "}
-                                            {team.teamInfo["c4"].name} <br></br>{" "}
+                                            {gender(team.teamInfo["c4"].gender)}
+                                            {team.teamInfo["c4"].name} <br></br>
                                         </span>
                                     )}
                                 </div>
                             </div>
-                            {team.answers.map(e => (
-                                <p> {e} </p>
+                            <h3>{team.time ? `${formatDiff(team.time.timeEnded - team.time.timeStarted)} | ${formatMS(team.time.timeStarted)} to ${formatMS(team.time.timeEnded)}` : "N/A"}</h3>
+                            {team.answers.map((e,i) => (
+                                <p key={i.toString()}> {e} </p>
                             ))}
                         </>
                     ))}
                 </div>
             )}
-            {mode === "pie" && (
+            {/* temp disable */}
+            {false && mode === "pie" && (
                 <>
                     <div className="border-4 border-solid border-gray-300 bg-white rounded-lg w-2/3 mx-auto my-8 py-1">
                         <h1 className="text-center font-semibold text-4xl mb-2">
                             Instructions:
                         </h1>
                         {test.instructions?.map(i => (
-                            <p className="text-center text-2xl">{i}</p>
+                            <p className="text-center text-2xl" key={i}>
+                                {i}
+                            </p>
                         )) ?? (
                             <>
                                 <p className="text-center text-2xl">
@@ -484,8 +490,7 @@ export default ({ data, test, err, pdf }) => {
                                         id={`katex-outp-${i}`}
                                         key={`q-${i}`}
                                     >
-                                        {" "}
-                                        {s.question}{" "}
+                                        {s.question}
                                     </p>
                                 )}
                                 {!isSSR &&
@@ -533,9 +538,9 @@ export default ({ data, test, err, pdf }) => {
                                         xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
                                             d="M19 9l-7 7-7-7"
                                         ></path>
                                     </svg>
@@ -586,7 +591,7 @@ export default ({ data, test, err, pdf }) => {
             {mode === "raw" && <pre>{JSON.stringify(data, null, 4)}</pre>}
         </>
     );
-};
+}
 
 function base64Encode(str) {
     const CHARS =

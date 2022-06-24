@@ -222,7 +222,7 @@ function Footer() {
                     <div className="text-gray-800">© 2022 Copyright: OMMC™</div>
 
                     <p className="text-gray-800 text-xs mt-3 ">
-                        Made by Kevin Liu for OMMC
+                        Made by Vinay Singamsetty and Kevin Liu for OMMC
                     </p>
                 </div>
             </div>
