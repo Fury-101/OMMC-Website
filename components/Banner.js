@@ -25,15 +25,14 @@ function Banner() {
                                         OMMC is back!
                                     </span>
                                     <span className="hidden md:inline">
-                                        Big news! OMMC is back for its second
-                                        year this May.
+                                        OMMC has concluded. Thanks to everyone who participated!
                                     </span>
                                 </p>
                             </div>
                             <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
-                                <Link href="https://artofproblemsolving.com/community/c5h2837951">
+                                <Link href="http://www.ommcofficial.org/leaderboard">
                                     <a className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-red-800 bg-white hover:bg-indigo-50">
-                                        Learn more
+                                        See the results
                                     </a>
                                 </Link>
                             </div>
