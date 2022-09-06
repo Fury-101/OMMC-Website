@@ -151,6 +151,16 @@ const members = [
     },
     {
         id: 16,
+        name: "Neal Yan",
+        href: "#",
+        imageSrc:
+            "https://media.discordapp.net/attachments/751497467329118280/977556703505703012/unknown.png",
+        imageAlt: "Neal Yan",
+        role: "Content Creation",
+        bio: "Neal is a highschool junior and geometry addict hailing from Wisconsin, serving as a problem writer / testsolver / marketer for OMMC. Currently, he is also the chief math officer of the regional organization known as Youth EUCLID Association. In math contests, he's made USA(J)MO since 8th grade, and has achieved multiple individual top fives at collegiate math tournaments like BMT, SMT, and JHMT. During most of the day, he enjoys solving and attempting to write olympiad problems, grinding OTIS, spamming / calling friends on Discord, listening to electronic songs, and blogging on AoPS under the username 'crazyeyemoody907'.",
+    },
+    {
+        id: 17,
         name: "Ananya Vuppala",
         href: "#",
         imageSrc:
@@ -160,7 +170,7 @@ const members = [
         bio: "Ananya is currently a sophomore at Marine Academy of Science and Technology in Highlands, NJ. She is on OMMC's social media and outreach team, and helps out with making flyers and exploring social media design. She's a math tutor for students in elementary and middle school, and loves working with students to be able to work on their strengths and weaknesses and be part of their learning experience. A few of her hobbies include playing lacrosse, designing content, hiking, exploring finance, and many more. Ananya loves meeting new people and trying new things!",
     },
     {
-        id: 17,
+        id: 18,
         name: "Advika Vuppala",
         href: "#",
         imageSrc:
