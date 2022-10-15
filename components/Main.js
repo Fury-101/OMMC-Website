@@ -112,15 +112,17 @@ function Main() {
                                 </h1>
                                 <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                                     Online Monmouth Math Competition, or OMMC,
-                                    is a nonprofit organization which aims to
-                                    give talented high school and middle school
-                                    students an exciting and engaging way to
-                                    develop their skills in mathematics. We
-                                    provide an annual original high quality math
-                                    competition, in addition to various
-                                    educational materials and a community
-                                    Discord server. Our competition is available
-                                    to all students who are 18 or younger.
+                                    is a 501c3 accredited nonprofit organization
+                                    which aims to give talented high school and 
+                                    middle school students an exciting and 
+                                    engaging way to develop their skills in 
+                                    mathematics. We provide an annual original 
+                                    high quality math competition, in addition
+                                    to various educational materials and a 
+                                    Community Discord server. Our competition is
+                                    is available to all pre-college students.
+
+                                    
                                 </p>
                                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                                     <div className="rounded-md shadow">
